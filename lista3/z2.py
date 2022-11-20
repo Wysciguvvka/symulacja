@@ -1,5 +1,5 @@
 import math
-import random
+import generators
 import matplotlib.pyplot as plt
 
 
@@ -18,9 +18,9 @@ class Simulation:
     def poisson(self) -> int:
         k, x, y = 0, 0, 0
         while not y < x:
-            k = random.randint(0, 20)
+            k = generators.RandGen.randint(0, 20)
             x = (self.queue_mean ** k) * (math.e ** -self.queue_mean) / math.factorial(k)
-            y = random.uniform(0, 1)
+            y = generators.RandGen.uniform_range(0, 1)
         return k
 
     def exponential(self) -> int:
@@ -30,9 +30,9 @@ class Simulation:
         _lambda = 1 / self.handle_time
         t, x, y = 0, 0, 0
         while not y < x:
-            t = random.uniform(0, 36)
+            t = generators.RandGen.uniform_range(0, 36)
             x = _lambda * math.exp(-_lambda * t)
-            y = random.uniform(0, _lambda)
+            y = generators.RandGen.uniform_range(0, _lambda)
         return t
 
     def service(self) -> dict:
