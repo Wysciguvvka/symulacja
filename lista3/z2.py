@@ -1,7 +1,6 @@
 import math
 import random
 import matplotlib.pyplot as plt
-import numpy as np
 
 
 class Simulation:
@@ -68,12 +67,12 @@ if __name__ == '__main__':
     print(data)
     clients_data = data['clients']
     clients_time = []
-    for x in clients_data:
-        clients_time += x[1]
+    for _x in clients_data:
+        clients_time += _x[1]
     plt.hist(clients_time, bins=30)
     plt.ylabel('ilość powtórzeń')
     plt.xlabel('Czas obsługi klienta')
     plt.show()
-    print(f'Średni czas oczekiwania: {sum(data["wait_time"])/len(data["wait_time"])}')
-    print(f'Średni czas obsługi klienta: {sum(clients_time)/len(clients_time)}')
+    print(f'Średni czas oczekiwania: {sum(data["wait_time"]) / len(data["wait_time"])}')
+    print(f'Średni czas obsługi klienta: {sum(clients_time) / len(clients_time)}')
     print(f'ilość klientów na {sim_time} minut: {len(data["wait_time"])}')
